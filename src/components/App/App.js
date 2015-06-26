@@ -7,7 +7,10 @@ class App extends React.Component {
 		return (
 			<div>
 				<Header />
-				<RouteHandler/>
+
+				<div className="container">
+					<RouteHandler/>
+				</div>
 
 			</div>
 			);

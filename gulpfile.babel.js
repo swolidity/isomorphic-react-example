@@ -4,6 +4,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import runSequence from 'run-sequence';
 import cp from 'child_process';
 import del from 'del';
+import mkdirp from 'mkdirp';
 import minimist from 'minimist';
 
 const $ = gulpLoadPlugins();
@@ -16,14 +17,18 @@ let browserSync;
 gulp.task('default', ['serve']);
 
 // Clean output directory
-gulp.task('clean', () => del(['.tmp', 'build/*', '!build/.git'], {dot: true}));
+gulp.task('clean', cb => {
+	del(['.tmp', 'build/*', '!build/.git'], {dot: true}, () => {
+		mkdirp('build/public', cb)
+	});
+});
 
 // Static files
 gulp.task('assets', () => {
 	src.assets = 'src/public/**';
 	return gulp.src(src.assets)
-		.pipe($.changed('build'))
-		.pipe(gulp.dest('build'));
+		.pipe($.changed('build/public'))
+		.pipe(gulp.dest('build/public'));
 });
 
 // Resource files
@@ -48,7 +53,7 @@ gulp.task('bundle', cb => {
 	function bundle(err, stats) {
 		if (err) {
 			throw new $.util.PluginError('webpack', err);
-		}	
+		}
 
 		console.log(stats.toString({
 			colors: $.util.colors.supportsColor,
@@ -74,8 +79,8 @@ gulp.task('bundle', cb => {
 });
 
 // Build app
-gulp.task('build', ['clean'], cb => { 
-	runSequence(['assets', 'resources'], ['bundle'], cb); 
+gulp.task('build', ['clean'], cb => {
+	runSequence(['assets', 'resources'], ['bundle'], cb);
 });
 
 // Build and watch for changes
@@ -96,7 +101,7 @@ gulp.task('serve', ['build:watch'], cb => {
 	];
 	let started = false;
 	let server = (function startup() {
-		var child = cp.fork('build/server.js', { 
+		var child = cp.fork('build/server.js', {
 			env: Object.assign({NODE_ENV: 'development'}, process.env)
 		});
 		child.once('message', message => {

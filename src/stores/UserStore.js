@@ -1,5 +1,6 @@
 import alt from '../alt';
 import UserActions from '../actions/UserActions';
+import UserSource from '../sources/UserSource';
 
 class UserStore {
 	constructor() {
@@ -8,9 +9,11 @@ class UserStore {
 
 		this.bindListeners({
 			handleUpdateUsers: UserActions.UPDATE_USERS,
-			handleGetUsers: UserActions.GET_USERS,
+			handleFetchUsers: UserActions.FETCH_USERS,
 			handleUsersFailed: UserActions.USERS_FAILED
 		});
+
+		this.exportAsync(UserSource);
 	}
 
 	handleUpdateUsers(users) {
@@ -18,11 +21,11 @@ class UserStore {
 		this.errorMessage = null;
 	}
 
-	handleGetUsers() {
+	handleFetchUsers() {
 		this.users = [];
 	}
 
-	handleLocationsFailed(errorMessage) {
+	handleUsersFailed(errorMessage) {
 		this.errorMessage = errorMessage;
 	}
 }

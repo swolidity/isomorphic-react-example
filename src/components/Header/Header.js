@@ -1,14 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { Navbar, Nav, NavItem, DropdownButton, MenuItem } from 'react-bootstrap';
+import { NavItemLink } from 'react-router-bootstrap';
+
 
 class Header {
 
 	render() {
 		return (
-			<Navbar brand={<a href="#">Isomorphic React</a>}>
+			<Navbar brand={<Link to='/'>Isomorphic React</Link>}>
 				<Nav>
-		      <NavItem eventKey={1} href='#'>Link</NavItem>
-		      <NavItem eventKey={2} href='#'>Link</NavItem>
+		      <NavItemLink to={`/users`}>users</NavItemLink>
+		      <NavItemLink to={`/link`}>Link</NavItemLink>
 		      <DropdownButton eventKey={3} title='Dropdown'>
 		        <MenuItem eventKey='1'>Action</MenuItem>
 		        <MenuItem eventKey='2'>Another action</MenuItem>

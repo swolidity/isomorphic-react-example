@@ -1,5 +1,6 @@
 import React from 'react';
-import UserStore from '../stores/UserStore';
+import UserStore from '../../stores/UserStore';
+import UserActions from '../../actions/UserActions';
 
 let Users = React.createClass({
 
@@ -9,12 +10,11 @@ let Users = React.createClass({
 
 	componentDidMount() {
 		UserStore.listen(this.onChange);
-
-		UserActions.getUsers();
+		UserStore.fetchUsers();
 	},
 
 	componentWillUnmount() {
-		LocationStore.unlisten(this.onChange);
+		UserStore.unlisten(this.onChange);
 	},
 
 	onChange(state) {
@@ -24,13 +24,14 @@ let Users = React.createClass({
 	render() {
 		if (this.state.errorMessage) {
 			return (
-				<div>There was an error</div>
+				<div>Error: {this.state.errorMessage}</div>
 				);
 		}
 
 		if(!this.state.users.length) {
 			return (
 				<div>
+					{this.state.users}
 					<img src="/spinner.gif" />
 				</div>
 				)
