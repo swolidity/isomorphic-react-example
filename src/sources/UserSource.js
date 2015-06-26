@@ -16,7 +16,10 @@ const UserSource = {
     return {
       remote() {
 
-          return http.get('http://localhost:5000/api/users');
+          return http.get('http://localhost:5000/api/users')
+            .then((res) => {
+              return res.data;
+            });
 
       },
 

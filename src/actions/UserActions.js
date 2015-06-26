@@ -3,7 +3,7 @@ import alt from '../alt';
 class UserActions {
 
 	updateUsers(users) {
-		this.dispatch(users.data);
+		this.dispatch(users);
 	}
 
 	fetchUsers() {
