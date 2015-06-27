@@ -48,6 +48,7 @@
     "imports-loader": "^0.6.4",
     "react-router-bootstrap": "^0.16.0",
     "bluebird": "^2.9.30",
-    "axios": "^0.5.4"
+    "axios": "^0.5.4",
+    "iso": "^4.1.0"
   }
 }

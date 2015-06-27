@@ -6,6 +6,8 @@ import express from 'express';
 import React from 'react';
 import Router from 'react-router';
 import routes from './routes';
+//import AltIso from 'alt/utils/AltIso'; TODO: use AltIso for server-side async rendering
+//import alt from './alt';
 
 const server = express();
 
