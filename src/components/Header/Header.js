@@ -11,7 +11,8 @@ class Header {
 			<Navbar brand={<Link to='/'>Isomorphic React</Link>}>
 				<Nav>
 		      <NavItemLink to={`/users`}>users</NavItemLink>
-		      <NavItemLink to={`/link`}>Link</NavItemLink>
+		      <NavItemLink to={`/login`}>login</NavItemLink>
+		      <NavItemLink to={`/signup`}>signup</NavItemLink>
 		      <DropdownButton eventKey={3} title='Dropdown'>
 		        <MenuItem eventKey='1'>Action</MenuItem>
 		        <MenuItem eventKey='2'>Another action</MenuItem>

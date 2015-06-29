@@ -8,8 +8,14 @@ import Router from 'react-router';
 import routes from './routes';
 //import AltIso from 'alt/utils/AltIso'; TODO: use AltIso for server-side async rendering
 //import alt from './alt';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+
+mongoose.connect('mongodb://localhost:27017/iso-react');
 
 const server = express();
+
+server.use(bodyParser.urlencoded({ extended: true }));
 
 server.set('port', (process.env.PORT || 5000));
 server.use(express.static(path.join(__dirname, 'public')));

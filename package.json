@@ -49,6 +49,11 @@
     "react-router-bootstrap": "^0.16.0",
     "bluebird": "^2.9.30",
     "axios": "^0.5.4",
-    "iso": "^4.1.0"
+    "iso": "^4.1.0",
+    "passport": "^0.2.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.13.1",
+    "jsonwebtoken": "^5.0.2",
+    "passport-jwt": "^1.1.0"
   }
 }

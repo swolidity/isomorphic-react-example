@@ -2,24 +2,27 @@ import React from 'react';
 import UserStore from '../../stores/UserStore';
 import UserActions from '../../actions/UserActions';
 
-let Users = React.createClass({
+class Users extends React.Component {
 
-	getInitialState() {
-		return UserStore.getState();
-	},
+	constructor(props) {
+		super(props);
+		this.state = UserStore.getState();
+
+		this._onChange = this._onChange.bind(this);
+	}
 
 	componentDidMount() {
-		UserStore.listen(this.onChange);
+		UserStore.listen(this._onChange);
 		UserStore.fetchUsers();
-	},
+	}
 
 	componentWillUnmount() {
-		UserStore.unlisten(this.onChange);
-	},
+		UserStore.unlisten(this._onChange);
+	}
 
-	onChange(state) {
+	_onChange(state) {
 		this.setState(state);
-	},
+	}
 
 	render() {
 		if (this.state.errorMessage) {
@@ -41,12 +44,12 @@ let Users = React.createClass({
 				<ul>
 					{this.state.users.map((user) => {
 						return (
-								<li>{user.name}</li>
+								<li>{user.username}</li>
 							);
 					})}
 				</ul>
 			);
 	}
-});
+}
 
 module.exports = Users;
