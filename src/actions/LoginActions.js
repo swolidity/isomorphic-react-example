@@ -1,4 +1,5 @@
 import alt from '../alt';
+import router from '../router';
 
 class LoginActions {
 
@@ -10,6 +11,8 @@ class LoginActions {
   // Login user. user object contains jwt token
   loginUser(user) {
     localStorage.setItem('token', user.token);
+    router.transitionTo('/');
+    
     this.dispatch(user);
   }
 
@@ -19,6 +22,8 @@ class LoginActions {
 
   logoutUser() {
     localStorage.removeItem('token');
+    router.transitionTo('/login');
+
     this.dispatch();
   }
 }
