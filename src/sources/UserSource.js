@@ -7,6 +7,9 @@ const UserSource = {
         return http.get('http://localhost:5000/api/users')
           .then((res) => {
             return res.data;
+          })
+          .catch((err) => {
+            return Promise.reject(err.data);
           });
     },
 

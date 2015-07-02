@@ -11,14 +11,14 @@ router.post('/login', (req, res, next) => {
     if (err) { return next(err); }
 
     // No user found with that username
-    if (!user) { return res.send({ success: false, message: 'Authentication failed. User not found'}); }
+    if (!user) { return res.status(401).send('Authentication failed. User not found'); }
 
     // Make sure password is correct
     user.verifyPassword(req.body.password, (err, isMatch) => {
       if (err) { return next(err) }
 
       // Password did not match
-      if (!isMatch) { return res.send({ success: false, message: 'Authentication failed. Invalid password.'}); }
+      if (!isMatch) { return res.status(401).send('Authentication failed. Invalid password.'); }
 
       // user found and password is correct
       // create token
@@ -26,8 +26,7 @@ router.post('/login', (req, res, next) => {
 
       // return user with token
       res.send({
-        success: true,
-        message: 'Logged in.',
+        username: user.username,
         token: token
       });
     });

@@ -18,8 +18,6 @@ router.post('/', (req, res) => {
     password: req.body.password
   });
 
-  console.log(req.body.username);
-
   user.save((err) => {
     if (err) {
       res.send(err);

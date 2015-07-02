@@ -1,17 +1,28 @@
-import LoginActions from './actions/LoginActions';
+import LoginActions from '../actions/LoginActions';
 import http from 'axios';
 
 const LoginSource = {
   login: {
     remote(state) {
-
+      return http.post('/api/auth/login', {
+        username: state.login.username,
+        password: state.login.password
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => {
+        return Promise.reject(err.data);
+      });
     },
 
-    local(state) {
+    local() {
       return null;
     },
 
-    loading: LoginActions.loadingLogin,
-    success:
+    success: LoginActions.loginUser,
+    error: LoginActions.loginFailed
   }
 }
+
+module.exports = LoginSource;

@@ -1,26 +1,30 @@
 import React from 'react';
 import UserStore from '../../stores/UserStore';
 import UserActions from '../../actions/UserActions';
+import Authenticated from '../../decorators/Authenticated';
 
 class Users extends React.Component {
 
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = UserStore.getState();
 
-		this._onChange = this._onChange.bind(this);
+		this.onChange = this.onChange.bind(this);
 	}
 
-	componentDidMount() {
-		UserStore.listen(this._onChange);
+	componentWillMount() {
 		UserStore.fetchUsers();
 	}
 
-	componentWillUnmount() {
-		UserStore.unlisten(this._onChange);
+	componentDidMount() {
+		UserStore.listen(this.onChange);
 	}
 
-	_onChange(state) {
+	componentWillUnmount() {
+		UserStore.unlisten(this.onChange);
+	}
+
+	onChange(state) {
 		this.setState(state);
 	}
 
@@ -31,10 +35,9 @@ class Users extends React.Component {
 				);
 		}
 
-		if(!this.state.users.length) {
+		if(UserStore.isLoading()) {
 			return (
 				<div>
-					{this.state.users}
 					<img src="/spinner.gif" />
 				</div>
 				)
@@ -52,4 +55,4 @@ class Users extends React.Component {
 	}
 }
 
-module.exports = Users;
+module.exports = Authenticated(Users);

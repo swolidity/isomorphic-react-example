@@ -10,12 +10,16 @@ import routes from './routes';
 //import alt from './alt';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import morgan from 'morgan';
 
 mongoose.connect('mongodb://localhost:27017/iso-react');
 
 const server = express();
 
+server.use(morgan('dev'));
+
 server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
 
 server.set('port', (process.env.PORT || 5000));
 server.use(express.static(path.join(__dirname, 'public')));
@@ -27,7 +31,20 @@ const templateFile = path.join(__dirname, 'templates/index.html');
 const template = _.template(fs.readFileSync(templateFile, 'utf8'));
 
 server.get('/*', function(req, res) {
-	Router.run(routes, req.url, Handler => {
+
+	let router = Router.create({
+		routes: routes,
+		location: req.url,
+		onAbort:(abortReason) => {
+			if (abortReason.constructor.name == 'Redirect') {
+				let { to, params, query } = abortReason;
+				let path = router.makePath(to, params, query);
+				res.redirect(path);
+			}
+		}
+	});
+
+	router.run(Handler => {
 		let data = {title: ''};
 		data.body = React.renderToString(<Handler />);
 		let html = template(data);
