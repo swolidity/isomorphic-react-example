@@ -10,7 +10,7 @@ module.exports = {
       render(Handler, state);
     });
   },
-  
+
   getCurrentPath() {
     return router.getCurrentPath();
   },
