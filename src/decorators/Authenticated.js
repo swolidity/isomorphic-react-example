@@ -5,7 +5,6 @@ function Authenticated(ComposedComponent) {
   return class Authenticated extends React.Component {
 
     static willTransitionTo(transition) {
-      console.log(LoginStore.isLoggedIn());
       if (!LoginStore.isLoggedIn()) {
         transition.redirect('/login');
       }

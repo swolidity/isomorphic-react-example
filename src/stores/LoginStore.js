@@ -11,7 +11,8 @@ class LoginStore {
     this.bindListeners({
       handleUpdateLogin: LoginActions.UPDATE_LOGIN,
       handleLoginUser: LoginActions.LOGIN_USER,
-      handleLoginFailed: LoginActions.LOGIN_FAILED
+      handleLoginFailed: LoginActions.LOGIN_FAILED,
+      handleLogoutUser: LoginActions.LOGOUT_USER
     });
 
     this.exportAsync(LoginSource);
@@ -29,6 +30,10 @@ class LoginStore {
 
   handleLoginFailed(errorMessage) {
     this.errorMessage = errorMessage;
+  }
+
+  handleLogoutUser() {
+    this.user = null;
   }
 
   static isLoggedIn() {

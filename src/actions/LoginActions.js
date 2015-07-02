@@ -16,6 +16,11 @@ class LoginActions {
   loginFailed(errorMessage) {
     this.dispatch(errorMessage);
   }
+
+  logoutUser() {
+    localStorage.removeItem('token');
+    this.dispatch();
+  }
 }
 
 module.exports = alt.createActions(LoginActions);
