@@ -28,9 +28,7 @@ router.post('/login', (req, res, next) => {
         });
 
       // return user with token
-      res.send({
-        token: token
-      });
+      res.send(token);
     });
   });
 });
