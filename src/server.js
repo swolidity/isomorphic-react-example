@@ -5,7 +5,7 @@ import path from 'path';
 import express from 'express';
 import React from 'react';
 import Router from 'react-router';
-import router from './router';
+import RouterContainer from './RouterContainer';
 import routes from './routes';
 //import AltIso from 'alt/utils/AltIso'; TODO: use AltIso for server-side async rendering
 //import alt from './alt';
@@ -33,7 +33,7 @@ const template = _.template(fs.readFileSync(templateFile, 'utf8'));
 
 server.get('/*', function(req, res) {
 
-	router.create(Router, {
+	let router = Router.create({
 		routes: routes,
 		location: req.url,
 		onAbort:(abortReason) => {
@@ -44,6 +44,9 @@ server.get('/*', function(req, res) {
 			}
 		}
 	});
+
+	// store the router instance in the RouterContainer
+	RouterContainer.set(router);
 
 	router.run((Handler, state) => {
 		let data = {title: ''};

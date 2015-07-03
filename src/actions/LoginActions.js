@@ -1,5 +1,5 @@
 import alt from '../alt';
-import router from '../router';
+import RouterContainer from '../RouterContainer';
 
 class LoginActions {
 
@@ -12,7 +12,7 @@ class LoginActions {
   loginUser(token) {
     localStorage.setItem('token', token);
 
-    router.transitionTo('/');
+    RouterContainer.get().transitionTo('/');
 
     this.dispatch(token);
   }
@@ -23,7 +23,7 @@ class LoginActions {
 
   logoutUser() {
     localStorage.removeItem('token');
-    router.transitionTo('/login');
+    RouterContainer.get().transitionTo('/login');
 
     this.dispatch();
   }
