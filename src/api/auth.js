@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import User from './models/user';
-import jwtUtil from './utils/jwt-util';
+import jwt_util from './utils/jwt-util';
 
 const router = new Router();
 
@@ -22,11 +22,13 @@ router.post('/login', (req, res, next) => {
 
       // user found and password is correct
       // create token
-      let token = jwtUtil.createToken({ _id: user._id });
+      let token = jwt_util.createToken({
+        _id: user._id,
+        username: user.username
+        });
 
       // return user with token
       res.send({
-        username: user.username,
         token: token
       });
     });

@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-let jwtUtil = {
+let jwt_util = {
   createToken(payload) {
     return jwt.sign(payload, 'secret', {
       expiresInMinutes: 1440
@@ -8,4 +8,4 @@ let jwtUtil = {
   }
 }
 
-module.exports = jwtUtil;
+module.exports = jwt_util;

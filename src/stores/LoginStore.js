@@ -1,6 +1,7 @@
 import alt from '../alt';
 import LoginActions from '../actions/LoginActions';
 import LoginSource from '../sources/LoginSource';
+import jwt_decode from 'jwt-decode';
 
 class LoginStore {
   constructor() {
@@ -23,8 +24,8 @@ class LoginStore {
     this.login = login;
   }
 
-  handleLoginUser(user) {
-    this.user = user;
+  handleLoginUser(token) {
+    this.user = jwt_decode(token);
     this.errorMessage = null;
   }
 

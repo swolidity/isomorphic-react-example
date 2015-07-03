@@ -55,6 +55,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.1",
     "jsonwebtoken": "^5.0.2",
-    "passport-jwt": "^1.1.0"
+    "passport-jwt": "^1.1.0",
+    "jwt-decode": "^1.1.1"
   }
 }

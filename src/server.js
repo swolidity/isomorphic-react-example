@@ -45,7 +45,7 @@ server.get('/*', function(req, res) {
 		}
 	});
 
-	router.run(Handler => {
+	router.run((Handler, state) => {
 		let data = {title: ''};
 		data.body = React.renderToString(<Handler />);
 		let html = template(data);

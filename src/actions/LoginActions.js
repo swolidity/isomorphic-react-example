@@ -8,12 +8,13 @@ class LoginActions {
     this.dispatch(login);
   }
 
-  // Login user. user object contains jwt token
-  loginUser(user) {
-    localStorage.setItem('token', user.token);
+  // Login user with jwt token
+  loginUser(token) {
+    localStorage.setItem('token', token);
+
     router.transitionTo('/');
-    
-    this.dispatch(user);
+
+    this.dispatch(token);
   }
 
   loginFailed(errorMessage) {
