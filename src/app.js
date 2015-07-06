@@ -3,6 +3,7 @@ import Router from 'react-router';
 import RouterContainer from './RouterContainer';
 import routes from './routes';
 import LoginActions from './actions/LoginActions';
+import RouterActions from './actions/RouterActions';
 
 let router = Router.create({
 	routes: routes,
@@ -18,5 +19,8 @@ if (token) {
 }
 
 router.run((Handler, state) => {
-	React.render(<Handler />, document.getElementById('app'))
+
+	RouterActions.changeRoute(state);
+
+	React.render(<Handler />, document.getElementById('app'));
 });

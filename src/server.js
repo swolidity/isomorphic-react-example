@@ -7,6 +7,7 @@ import React from 'react';
 import Router from 'react-router';
 import RouterContainer from './RouterContainer';
 import routes from './routes';
+import RouterActions from './actions/RouterActions';
 //import AltIso from 'alt/utils/AltIso'; TODO: use AltIso for server-side async rendering
 //import alt from './alt';
 import mongoose from 'mongoose';
@@ -49,6 +50,9 @@ server.get('/*', function(req, res) {
 	RouterContainer.set(router);
 
 	router.run((Handler, state) => {
+
+		RouterActions.changeRoute(state);
+
 		let data = {title: ''};
 		data.body = React.renderToString(<Handler />);
 		let html = template(data);
