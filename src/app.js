@@ -4,6 +4,8 @@ import RouterContainer from './RouterContainer';
 import routes from './routes';
 import LoginActions from './actions/LoginActions';
 import RouterActions from './actions/RouterActions';
+import Iso from 'iso';
+import alt from './alt';
 
 let router = Router.create({
 	routes: routes,
@@ -12,15 +14,28 @@ let router = Router.create({
 
 RouterContainer.set(router);
 
-let token = localStorage.getItem('token');
+Iso.bootstrap((state, meta, container) => {
 
-if (token) {
-	LoginActions.loginUser(token);
-}
+	alt.bootstrap(state);
 
-router.run((Handler, state) => {
+	let token = localStorage.getItem('token');
 
-	RouterActions.changeRoute(state);
+	if (token) {
+		LoginActions.loginUser(token);
+	}
 
-	React.render(<Handler />, document.getElementById('app'));
+	router.run((Handler, state) => {
+
+		RouterActions.changeRoute(state);
+
+		// catch nextPath in query on server, updateNextPath in store, and remove from query
+		let nextPath = state.query.nextPath || null;
+		if (nextPath) {
+			RouterActions.updateNextPath(nextPath);
+		}
+
+		let node = <Handler />;
+		React.render(node, container);
+	});
+
 });

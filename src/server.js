@@ -9,10 +9,11 @@ import RouterContainer from './RouterContainer';
 import routes from './routes';
 import RouterActions from './actions/RouterActions';
 //import AltIso from 'alt/utils/AltIso'; TODO: use AltIso for server-side async rendering
-//import alt from './alt';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
+import Iso from 'iso';
+import alt from './alt';
 
 mongoose.connect('mongodb://localhost:27017/iso-react');
 
@@ -32,7 +33,7 @@ server.use('/api', require('./api/api.js'));
 const templateFile = path.join(__dirname, 'templates/index.html');
 const template = _.template(fs.readFileSync(templateFile, 'utf8'));
 
-server.get('/*', function(req, res) {
+server.get('*', function(req, res) {
 
 	let router = Router.create({
 		routes: routes,
@@ -40,6 +41,12 @@ server.get('/*', function(req, res) {
 		onAbort:(abortReason) => {
 			if (abortReason.constructor.name == 'Redirect') {
 				let { to, params, query } = abortReason;
+
+				if (!query) query = {};
+
+				// add nextPath to query for friendly forwarding
+				query.nextPath = req.path;
+
 				let path = router.makePath(to, params, query);
 				res.redirect(path);
 			}
@@ -53,9 +60,26 @@ server.get('/*', function(req, res) {
 
 		RouterActions.changeRoute(state);
 
+		// catch nextPath in query on server, updateNextPath in store, and remove from query
+		let nextPath = state.query.nextPath;
+		if (nextPath) {
+			RouterActions.updateNextPath(nextPath);
+		}
+
+		alt.bootstrap(JSON.stringify({
+			RouterStore: {
+				nextPath: nextPath
+			}
+		}));
+
+		let iso = new Iso();
+
 		let data = {title: ''};
 		data.body = React.renderToString(<Handler />);
+		iso.add(data.body, alt.flush());
+		data.body = iso.render();
 		let html = template(data);
+
 		res.send(html);
 	});
 });
