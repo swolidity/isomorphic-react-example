@@ -28,12 +28,6 @@ Iso.bootstrap((state, meta, container) => {
 
 		RouterActions.changeRoute(state);
 
-		// catch nextPath in query on server, updateNextPath in store, and remove from query
-		let nextPath = state.query.nextPath || null;
-		if (nextPath) {
-			RouterActions.updateNextPath(nextPath);
-		}
-
 		let node = <Handler />;
 		React.render(node, container);
 	});

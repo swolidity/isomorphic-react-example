@@ -16,7 +16,9 @@ class LoginActions {
 
     // call transition for friendly forwarding after dispatch so that store has a logged in user
     let router = RouterContainer.get();
-    let nextPath = RouterStore.getNextPath() || '/';
+    let route = RouterStore.getRouteState();
+    let nextPath = RouterStore.getNextPath() || route.query.nextPath || '/';
+
     router.transitionTo(nextPath);
   }
 

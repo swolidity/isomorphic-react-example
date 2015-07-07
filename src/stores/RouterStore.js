@@ -17,7 +17,6 @@ class RouterStore {
   }
 
   handleUpdateNextPath(nextPath) {
-    console.log(nextPath);
     this.nextPath = nextPath;
   }
 

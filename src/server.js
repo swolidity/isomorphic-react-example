@@ -58,17 +58,9 @@ server.get('*', function(req, res) {
 
 	router.run((Handler, state) => {
 
-		RouterActions.changeRoute(state);
-
-		// catch nextPath in query on server, updateNextPath in store, and remove from query
-		let nextPath = state.query.nextPath;
-		if (nextPath) {
-			RouterActions.updateNextPath(nextPath);
-		}
-
 		alt.bootstrap(JSON.stringify({
 			RouterStore: {
-				nextPath: nextPath
+				route: state
 			}
 		}));
 
