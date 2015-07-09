@@ -1,5 +1,5 @@
 import React from 'react';
-import UserStore from '../../stores/UserStore';
+import UsersStore from '../../stores/UsersStore';
 import UserActions from '../../actions/UserActions';
 import Authenticated from '../../decorators/Authenticated';
 
@@ -7,21 +7,21 @@ class Users extends React.Component {
 
 	constructor() {
 		super();
-		this.state = UserStore.getState();
+		this.state = UsersStore.getState();
 
 		this.onChange = this.onChange.bind(this);
 	}
 
 	componentWillMount() {
-		UserStore.fetchUsers();
+		UsersStore.fetchUsers();
 	}
 
 	componentDidMount() {
-		UserStore.listen(this.onChange);
+		UsersStore.listen(this.onChange);
 	}
 
 	componentWillUnmount() {
-		UserStore.unlisten(this.onChange);
+		UsersStore.unlisten(this.onChange);
 	}
 
 	onChange(state) {
@@ -35,7 +35,7 @@ class Users extends React.Component {
 				);
 		}
 
-		if(UserStore.isLoading()) {
+		if(UsersStore.isLoading()) {
 			return (
 				<div>
 					<img src="/spinner.gif" />

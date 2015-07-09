@@ -2,7 +2,7 @@ import alt from '../alt';
 import UserActions from '../actions/UserActions';
 import UserSource from '../sources/UserSource';
 
-class UserStore {
+class UsersStore {
 	constructor() {
 		this.users = [];
 		this.errorMessage = null;
@@ -30,4 +30,4 @@ class UserStore {
 	}
 }
 
-module.exports = alt.createStore(UserStore, 'UserStore');
+module.exports = alt.createStore(UsersStore, 'UsersStore');
