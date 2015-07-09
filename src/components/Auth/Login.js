@@ -48,7 +48,7 @@ class Login extends React.Component {
 
     return(
       <div>
-        <p>Error: {this.state.errorMessage}</p>
+        <p>{this.state.errorMessage}</p>
         <form className="form-horizontal">
           <Input type="text" label="username" labelClassName="col-xs-2" wrapperClassName="col-xs-10" ref="username" defaultValue={this.state.login.username} />
           <Input type="password" label="password" labelClassName="col-xs-2" wrapperClassName="col-xs-10" ref="password" />

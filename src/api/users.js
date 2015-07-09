@@ -1,12 +1,13 @@
 import { Router } from 'express';
 import User from './models/user';
 import authenticateToken from './middleware/authenticate-token';
+import jwt_utils from './utils/jwt-util';
 
 const router = new Router();
 
 // get: /api/users
 router.get('/', (req, res) => {
-	User.find((err, users) => {
+	User.find({}).sort({date: 'desc'}).exec((err, users) => {
 		res.send(users);
 	});
 });
@@ -20,10 +21,17 @@ router.post('/', (req, res) => {
 
   user.save((err) => {
     if (err) {
-      res.send(err);
+			console.log(err);
+      return res.status(500).send(err);
     }
 
-    res.send({ success: true });
+		let token = jwt_utils.createToken({
+			_id: user._id,
+			username: user.username
+		});
+
+		// return jwt token
+    res.send(token);
   });
 });
 

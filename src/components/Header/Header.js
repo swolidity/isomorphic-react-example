@@ -36,13 +36,16 @@ class Header extends React.Component {
 
 	render() {
 		let loginNavItem;
+		let signupNavItem;
 
 		if (LoginStore.isLoggedIn()) {
 			// if user is logged in show logout link
 			loginNavItem = <NavItem onClick={this.handleLogout}>logout</NavItem>;
+			signupNavItem = null;
 		} else {
 			// if user is not logged in show login link
 			loginNavItem = <NavItemLink to={`/login`}>login</NavItemLink>;
+			signupNavItem = <NavItemLink to={`/signup`}>signup</NavItemLink>;
 		}
 
 		return (
@@ -50,7 +53,7 @@ class Header extends React.Component {
 				<Nav>
 		      <NavItemLink to={`/users`}>users</NavItemLink>
 					{loginNavItem}
-		      <NavItemLink to={`/signup`}>signup</NavItemLink>
+					{signupNavItem}
 		      <DropdownButton eventKey={3} title='Dropdown'>
 		        <MenuItem eventKey='1'>Action</MenuItem>
 		        <MenuItem eventKey='2'>Another action</MenuItem>
