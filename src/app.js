@@ -25,7 +25,7 @@ Iso.bootstrap((state, meta, container) => {
 	}
 
 	router.run((Handler, state) => {
-
+		
 		RouterActions.changeRoute(state);
 
 		let node = <Handler />;

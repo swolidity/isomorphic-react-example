@@ -1,7 +1,6 @@
 import alt from '../alt';
 import SignupActions from '../actions/SignupActions';
 import SignupSource from '../sources/SignupSource';
-import LoginActions from '../actions/LoginActions';
 
 class SignupStore {
   constructor() {

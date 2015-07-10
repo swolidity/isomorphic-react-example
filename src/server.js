@@ -45,9 +45,10 @@ server.get('*', function(req, res) {
 				if (!query) query = {};
 
 				// add nextPath to query for friendly forwarding
-				query.nextPath = req.path;
+				query.nextPath = req.url;
 
 				let path = router.makePath(to, params, query);
+
 				res.redirect(path);
 			}
 		}
