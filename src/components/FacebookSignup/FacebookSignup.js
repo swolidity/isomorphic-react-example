@@ -14,7 +14,7 @@ class FacebookSignup extends React.Component {
       <div className="FacebookSignup">
         <div className="header center">
           <div>
-            <img className="img-circle" src={ "https://graph.facebook.com/" + this.props.facebook.id + "/picture?width=100&height=100" } />
+            <img className="profile-pic img-circle" src={ "https://graph.facebook.com/" + this.props.facebook.id + "/picture?width=100&height=100" } />
           </div>
           <div className="fb-welcome">
             <h5>Hey { this.props.facebook.first_name }!</h5>
