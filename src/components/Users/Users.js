@@ -47,7 +47,10 @@ class Users extends React.Component {
 				<ul>
 					{this.state.users.map((user) => {
 						return (
-								<li>{user.username}</li>
+								<div>
+									<img className="img-circle" src={ user.photo } alt={ user.username } />
+									{ user.username }
+								</div>
 							);
 					})}
 				</ul>
