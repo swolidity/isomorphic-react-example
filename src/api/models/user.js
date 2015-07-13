@@ -7,11 +7,23 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
+  email: {
+    type: String,
+    unique: true,
+    required: true
+  },
   password: {
     type: String,
     required: true
   },
-  data: {type: Date, default: Date.now},
+  photo: {
+    type: String
+  },
+  facebook: {
+    id: String,
+    token: String
+  },
+  date: {type: Date, default: Date.now},
 });
 
 UserSchema.pre('save', function(cb) {

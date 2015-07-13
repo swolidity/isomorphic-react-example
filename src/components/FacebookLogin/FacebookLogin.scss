@@ -1,0 +1,12 @@
+$base-color: #3b5998;
+
+.FacebookLogin {
+  background: $base-color;
+  color: #fff;
+  font-weight: bold;
+
+  &:hover, &:focus {
+    background: lighten( $base-color, 10% );
+    color: #fff;
+  }
+}

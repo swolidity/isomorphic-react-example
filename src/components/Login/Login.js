@@ -2,6 +2,9 @@ import React from 'react';
 import LoginActions from '../../actions/LoginActions';
 import LoginStore from '../../stores/LoginStore';
 import { Input, ButtonInput } from 'react-bootstrap';
+import FacebookLogin from '../FacebookLogin/FacebookLogin';
+
+require('./Login.scss');
 
 class Login extends React.Component {
   constructor() {
@@ -36,6 +39,10 @@ class Login extends React.Component {
     LoginStore.login();
   }
 
+  handleFacebookLogin = (res) => {
+    LoginStore.fb_login(res.id);
+  }
+
   render() {
 
 		if(LoginStore.isLoading()) {
@@ -46,15 +53,21 @@ class Login extends React.Component {
       );
 		}
 
-    return(
-      <div>
+    return (
+      <div className="Login col-xs-12 col-md-5 center-block">
+
         <p>{this.state.errorMessage}</p>
-        <form className="form-horizontal">
-          <Input type="text" label="username" labelClassName="col-xs-2" wrapperClassName="col-xs-10" ref="username" defaultValue={this.state.login.username} />
-          <Input type="password" label="password" labelClassName="col-xs-2" wrapperClassName="col-xs-10" ref="password" />
-          <ButtonInput type="submit" value="Login" wrapperClassName="col-xs-10" onClick={this.handleSubmit} />
+
+        <form>
+          <Input type="text" placeholder="username" ref="username" defaultValue={this.state.login.username} />
+          <Input type="password" placeholder="password" ref="password" />
+          <ButtonInput className="btn-block" type="submit" value="Login" onClick={this.handleSubmit} />
         </form>
+
+        <FacebookLogin class="facebook-login btn-block" loginHandler={ this.handleFacebookLogin } />
+
       </div>
+
     );
   }
 

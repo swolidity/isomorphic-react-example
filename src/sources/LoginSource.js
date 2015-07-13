@@ -4,7 +4,7 @@ import http from 'axios';
 const LoginSource = {
   login: {
     remote(state) {
-      return http.post('/api/auth/login', {
+      return http.post('/api/login', {
         username: state.login.username,
         password: state.login.password
       })

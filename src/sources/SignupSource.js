@@ -4,9 +4,9 @@ import http from 'axios';
 const SignupSource = {
   signup: {
     remote(state) {
-      return http.post('/api/users', {
+      return http.post('/api/signup', {
         username: state.signup.username,
-        password: state.signup.password
+        password: state.signup.password,
       })
       .then((res) => {
         return res.data;
@@ -22,7 +22,6 @@ const SignupSource = {
 
     success: SignupActions.signupSuccess,
     error: SignupActions.signupFailed
-
   }
 }
 

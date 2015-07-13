@@ -4,8 +4,8 @@ import React from 'react';
 import App from './components/App/App';
 import About from './components/About/About';
 import Users from './components/Users/Users';
-import Login from './components/Auth/Login';
-import Signup from './components/Auth/Signup';
+import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
 import UserProfile from './components/UserProfile/UserProfile';
 
 export default (

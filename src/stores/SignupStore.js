@@ -5,12 +5,14 @@ import SignupSource from '../sources/SignupSource';
 class SignupStore {
   constructor() {
     this.signup = {};
+    this.facebook = null;
     this.errorMessage = null;
 
     this.bindListeners({
       handleUpdateSignup: SignupActions.UPDATE_SIGNUP,
       handleSignupSuccess: SignupActions.SIGNUP_SUCCESS,
-      handleSignupFailed: SignupActions.SIGNUP_FAILED
+      handleSignupFailed: SignupActions.SIGNUP_FAILED,
+      handleUpdateFacebook: SignupActions.UPDATE_FACEBOOK
     });
 
     this.exportAsync(SignupSource);
@@ -26,6 +28,10 @@ class SignupStore {
 
   handleSignupFailed(errorMessage) {
     this.errorMessage = errorMessage;
+  }
+
+  handleUpdateFacebook(facebook) {
+    this.facebook = facebook;
   }
 }
 

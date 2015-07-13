@@ -19,7 +19,7 @@ gulp.task('default', ['serve']);
 // Clean output directory
 gulp.task('clean', cb => {
 	del(['.tmp', 'build/*', '!build/.git'], {dot: true}, () => {
-		mkdirp('build/public', cb)
+		mkdirp('build/public/', cb);
 	});
 });
 

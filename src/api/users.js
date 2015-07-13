@@ -12,29 +12,6 @@ router.get('/', (req, res) => {
 	});
 });
 
-// post: /api/users
-router.post('/', (req, res) => {
-  let user = new User({
-    username: req.body.username,
-    password: req.body.password
-  });
-
-  user.save((err) => {
-    if (err) {
-			console.log(err);
-      return res.status(500).send(err);
-    }
-
-		let token = jwt_utils.createToken({
-			_id: user._id,
-			username: user.username
-		});
-
-		// return jwt token
-    res.send(token);
-  });
-});
-
 // post: /api/users/edit
 router.post('/edit', authenticateToken, (req, res, next) => {
 	res.send({ username: req.user.username });

@@ -15,6 +15,10 @@ class SignupActions {
   signupFailed(errorMessage) {
     this.dispatch(errorMessage);
   }
+
+  updateFacebook(facebook) {
+    this.dispatch(facebook);
+  }
 }
 
 module.exports = alt.createActions(SignupActions);

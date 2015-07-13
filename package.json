@@ -27,12 +27,17 @@
     "gulp-changed": "^1.2.1",
     "file-loader": "^0.8.4",
     "url-loader": "^0.5.6",
-    "css-loader": "^0.15.1",
+    "css-loader": "^0.15.2",
     "less": "^2.5.1",
     "less-loader": "^2.2.0",
     "style-loader": "^0.12.3",
     "mkdirp": "^0.5.1",
-    "morgan": "^1.6.0"
+    "morgan": "^1.6.0",
+    "node-sass": "^3.2.0",
+    "sass-loader": "^1.0.2",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "node-noop": "0.0.1",
+    "imports-loader": "^0.6.4"
   },
   "dependencies": {
     "lodash": "^3.9.3",
@@ -43,10 +48,7 @@
     "alt": "^0.16.10",
     "mongoose": "^4.0.5",
     "react-bootstrap": "^0.23.4",
-    "bootstrap": "^3.3.5",
-    "bootstrap-webpack": "0.0.3",
     "jquery": "^2.1.4",
-    "imports-loader": "^0.6.4",
     "react-router-bootstrap": "^0.16.0",
     "bluebird": "^2.9.30",
     "axios": "^0.5.4",
@@ -56,6 +58,8 @@
     "body-parser": "^1.13.1",
     "jsonwebtoken": "^5.0.2",
     "passport-jwt": "^1.1.0",
-    "jwt-decode": "^1.1.1"
+    "jwt-decode": "^1.1.1",
+    "bootstrap-sass": "^3.3.5",
+    "bootstrap-sass-loader": "^1.0.6"
   }
 }

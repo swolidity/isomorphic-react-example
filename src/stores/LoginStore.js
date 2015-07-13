@@ -1,6 +1,7 @@
 import alt from '../alt';
 import LoginActions from '../actions/LoginActions';
 import LoginSource from '../sources/LoginSource';
+import FacebookLoginSource from '../sources/FacebookLoginSource';
 import jwt_decode from 'jwt-decode';
 
 class LoginStore {
@@ -17,6 +18,7 @@ class LoginStore {
     });
 
     this.exportAsync(LoginSource);
+    this.exportAsync(FacebookLoginSource);
 
   }
 
