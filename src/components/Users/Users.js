@@ -1,7 +1,6 @@
 import React from 'react';
 import UsersStore from '../../stores/UsersStore';
 import UserActions from '../../actions/UserActions';
-import Authenticated from '../../decorators/Authenticated';
 
 class Users extends React.Component {
 
@@ -58,4 +57,4 @@ class Users extends React.Component {
 	}
 }
 
-module.exports = Authenticated(Users);
+module.exports = Users;
