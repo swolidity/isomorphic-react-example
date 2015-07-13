@@ -78,6 +78,4 @@ const serverConfig = merge({}, config, {
 	]
 });
 
-console.log(appConfig.module.loaders);
-
 module.exports = [appConfig, serverConfig];

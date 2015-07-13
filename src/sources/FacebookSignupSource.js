@@ -5,8 +5,8 @@ const FacebookSignupSource = {
   fb_signup: {
     remote(state) {
       return http.post('/api/signup/fb', {
-        username: state.signup.username,
-        password: state.signup.password,
+        signup: state.facebook.signup,
+        facebook: state.facebook,
       })
       .then((res) => {
         return res.data;
@@ -25,4 +25,4 @@ const FacebookSignupSource = {
   }
 }
 
-module.exports = SignupSource;
+module.exports = FacebookSignupSource;

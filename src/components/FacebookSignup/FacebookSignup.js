@@ -5,8 +5,17 @@ require('./FacebookSignup.scss');
 
 class FacebookSignup extends React.Component {
 
-  constructor(props) {
-    super(props);
+  handleSubmit = (e) => {
+    e.preventDefault;
+
+    let signup = {
+      username: this.refs.username.getValue(),
+      email: this.refs.email.getValue(),
+      password: this.refs.password.getValue()
+    };
+
+    this.props.signupHandler(signup);
+
   }
 
   render() {
@@ -25,7 +34,7 @@ class FacebookSignup extends React.Component {
           <Input type="text" placeholder="username" ref="username" />
           <Input type="email" placeholder="email" ref="email" defaultValue={ this.props.facebook.email } />
           <Input type="password" placeholder="password" ref="password" />
-          <ButtonInput className="btn-block" type="submit" value="Sign Up" onClick={ this.props.signupHandler } />
+          <ButtonInput className="btn-block" type="submit" value="Sign Up" onClick={ this.handleSubmit } />
         </form>
     </div>
     );

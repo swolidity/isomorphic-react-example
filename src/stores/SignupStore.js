@@ -1,6 +1,7 @@
 import alt from '../alt';
 import SignupActions from '../actions/SignupActions';
 import SignupSource from '../sources/SignupSource';
+import FacebookSignupSource from '../sources/FacebookSignupSource';
 
 class SignupStore {
   constructor() {
@@ -16,6 +17,7 @@ class SignupStore {
     });
 
     this.exportAsync(SignupSource);
+    this.exportAsync(FacebookSignupSource);
   }
 
   handleUpdateSignup(signup) {

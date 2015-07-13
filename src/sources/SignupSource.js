@@ -6,6 +6,7 @@ const SignupSource = {
     remote(state) {
       return http.post('/api/signup', {
         username: state.signup.username,
+        email: state.signup.email,
         password: state.signup.password,
       })
       .then((res) => {

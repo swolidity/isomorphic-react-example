@@ -30,6 +30,7 @@ class Signup extends React.Component {
 
     let signup = {
       username: this.refs.username.getValue(),
+      email: this.refs.email.getValue(),
       password: this.refs.password.getValue()
     };
 
@@ -38,12 +39,15 @@ class Signup extends React.Component {
     SignupStore.signup();
   }
 
-  handleFacebookLogin = (res) => {
-    SignupActions.updateFacebook(res);
+  handleFacebookLogin = (facebook) => {
+    SignupActions.updateFacebook(facebook);
   }
 
-  handleFacebookSignup = (res) => {
-
+  handleFacebookSignup = (signup) => {
+    let facebook = this.state.facebook;
+    facebook.signup = signup;
+    SignupActions.updateFacebook(facebook);
+    SignupStore.fb_signup();
   }
 
   render() {
@@ -62,6 +66,7 @@ class Signup extends React.Component {
 
         <form>
           <Input type="text" placeholder="username" ref="username" defaultValue={this.state.signup.username} />
+          <Input type="email" placeholder="email" ref="email" defaultValue={ this.state.signup.email } />
           <Input type="password" placeholder="password" ref="password" />
           <ButtonInput type="submit" className="btn-block" value="Sign Up" onClick={this.handleSubmit} />
         </form>
