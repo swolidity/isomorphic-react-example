@@ -7,7 +7,8 @@ import FacebookLogin from '../FacebookLogin/FacebookLogin';
 require('./Login.scss');
 
 class Login extends React.Component {
-  constructor() {
+
+constructor() {
     super();
     this.state = LoginStore.getState();
     this.handleChange = this.handleChange.bind(this);
@@ -45,8 +46,8 @@ class Login extends React.Component {
 
   render() {
 
-		if(LoginStore.isLoading()) {
-			return (
+		if (LoginStore.isLoading()) {
+      return (
 				<div>
 					<img src="/spinner.gif" />
 				</div>

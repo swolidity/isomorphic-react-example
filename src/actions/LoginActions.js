@@ -20,7 +20,7 @@ class LoginActions {
 
     let nextPath = RouterStore.getNextPath() || route.query.nextPath;
 
-    if(!nextPath && route.pathname === '/login') {
+    if(!nextPath && (route.pathname === '/login' || route.pathname === '/signup')) {
       nextPath = '/';
     }
 
