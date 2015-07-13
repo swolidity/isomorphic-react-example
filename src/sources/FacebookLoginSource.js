@@ -5,7 +5,10 @@ const FacebookLoginSource = {
   fb_login: {
     remote(state, facebook_id) {
       return http.post('/api/login/fb', {
-        facebook_id: facebook_id
+        // TODO: switch to rechecking accessToken on server
+        // https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow/v2.4#checktoken
+        // https://github.com/Thuzi/facebook-node-sdk/
+        facebook_id: facebook_id,
       })
       .then((res) => {
         return res.data;
