@@ -62,7 +62,7 @@ constructor() {
         <form>
           <Input type="text" placeholder="username" ref="username" defaultValue={this.state.login.username} />
           <Input type="password" placeholder="password" ref="password" />
-          <ButtonInput className="btn-block" type="submit" value="Login" onClick={this.handleSubmit} />
+          <ButtonInput bsStyle="primary" className="btn-block" type="submit" value="Login" onClick={this.handleSubmit} />
         </form>
 
         <FacebookLogin class="facebook-login btn-block" loginHandler={ this.handleFacebookLogin } />

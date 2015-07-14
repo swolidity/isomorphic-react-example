@@ -34,7 +34,7 @@ class FacebookSignup extends React.Component {
           <Input type="text" placeholder="username" ref="username" />
           <Input type="email" placeholder="email" ref="email" defaultValue={ this.props.facebook.email } />
           <Input type="password" placeholder="password" ref="password" />
-          <ButtonInput className="btn-block" type="submit" value="Sign Up" onClick={ this.handleSubmit } />
+          <ButtonInput bsStyle="primary" className="btn-block" type="submit" value="Sign Up" onClick={ this.handleSubmit } />
         </form>
     </div>
     );

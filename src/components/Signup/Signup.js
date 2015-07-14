@@ -68,7 +68,7 @@ class Signup extends React.Component {
           <Input type="text" placeholder="username" ref="username" defaultValue={this.state.signup.username} />
           <Input type="email" placeholder="email" ref="email" defaultValue={ this.state.signup.email } />
           <Input type="password" placeholder="password" ref="password" />
-          <ButtonInput type="submit" className="btn-block" value="Sign Up" onClick={this.handleSubmit} />
+          <ButtonInput type="submit" bsStyle="primary" className="btn-block" value="Sign Up" onClick={this.handleSubmit} />
         </form>
 
         <FacebookLogin class="facebook-signup btn-block" callToAction="Sign Up with Facebook" loginHandler={ this.handleFacebookLogin } />

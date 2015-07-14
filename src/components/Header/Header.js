@@ -5,6 +5,7 @@ import { NavItemLink } from 'react-router-bootstrap';
 import LoginActions from '../../actions/LoginActions';
 import LoginStore from '../../stores/LoginStore';
 
+require('./Header.scss');
 
 class Header extends React.Component {
 
@@ -49,7 +50,7 @@ class Header extends React.Component {
 		}
 
 		return (
-			<Navbar brand={<Link to='/'>Isomorphic React</Link>}>
+			<Navbar className="Navbar" brand={<Link to='/'>Isomorphic React</Link>}>
 				<Nav>
 		      <NavItemLink to={`/users`}>users</NavItemLink>
 					{loginNavItem}
