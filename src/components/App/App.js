@@ -10,7 +10,7 @@ class App extends React.Component {
 			<div>
 				<Header />
 
-				<div className="container">
+				<div className="app-main">
 					<RouteHandler/>
 				</div>
 

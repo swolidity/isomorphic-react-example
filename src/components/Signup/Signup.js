@@ -61,17 +61,19 @@ class Signup extends React.Component {
     }
 
     return (
-      <div className="Signup col-xs-12 col-md-5 center-block">
-        <p>{this.state.errorMessage}</p>
+      <div className="container">
+        <div className="Signup col-xs-12 col-md-5 center-block">
+          <p>{this.state.errorMessage}</p>
 
-        <form>
-          <Input type="text" placeholder="username" ref="username" defaultValue={this.state.signup.username} />
-          <Input type="email" placeholder="email" ref="email" defaultValue={ this.state.signup.email } />
-          <Input type="password" placeholder="password" ref="password" />
-          <ButtonInput type="submit" bsStyle="primary" className="btn-block" value="Sign Up" onClick={this.handleSubmit} />
-        </form>
+          <form>
+            <Input type="text" placeholder="username" ref="username" defaultValue={this.state.signup.username} />
+            <Input type="email" placeholder="email" ref="email" defaultValue={ this.state.signup.email } />
+            <Input type="password" placeholder="password" ref="password" />
+            <ButtonInput type="submit" bsStyle="primary" className="btn-block" value="Sign Up" onClick={this.handleSubmit} />
+          </form>
 
-        <FacebookLogin class="facebook-signup btn-block" callToAction="Sign Up with Facebook" loginHandler={ this.handleFacebookLogin } />
+          <FacebookLogin class="facebook-signup btn-block" callToAction="Sign Up with Facebook" loginHandler={ this.handleFacebookLogin } />
+        </div>
       </div>
     )
   }

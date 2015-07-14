@@ -6,13 +6,19 @@ class UserProfile extends React.Component {
     // TODO: redirect if user not found
   }
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
     return (
-      <p>Username: {this.props.params.username}</p>
+      <div className="ProfileHeader">
+        <div className="container">
+
+          <p>Username: {this.props.params.username}</p>
+        </div>
+      </div>
+
     );
   }
 }

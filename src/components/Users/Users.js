@@ -43,6 +43,7 @@ class Users extends React.Component {
 		}
 
 		return (
+			<div className="container">
 				<ul>
 					{this.state.users.map((user) => {
 						return (
@@ -53,6 +54,7 @@ class Users extends React.Component {
 							);
 					})}
 				</ul>
+			</div>
 			);
 	}
 }

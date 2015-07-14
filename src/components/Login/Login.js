@@ -55,20 +55,21 @@ constructor() {
 		}
 
     return (
-      <div className="Login col-xs-12 col-md-5 center-block">
+      <div className="container">
+        <div className="Login col-xs-12 col-md-5 center-block">
 
-        <p>{this.state.errorMessage}</p>
+          <p>{this.state.errorMessage}</p>
 
-        <form>
-          <Input type="text" placeholder="username" ref="username" defaultValue={this.state.login.username} />
-          <Input type="password" placeholder="password" ref="password" />
-          <ButtonInput bsStyle="primary" className="btn-block" type="submit" value="Login" onClick={this.handleSubmit} />
-        </form>
+          <form>
+            <Input type="text" placeholder="username" ref="username" defaultValue={this.state.login.username} />
+            <Input type="password" placeholder="password" ref="password" />
+            <ButtonInput bsStyle="primary" className="btn-block" type="submit" value="Login" onClick={this.handleSubmit} />
+          </form>
 
-        <FacebookLogin class="facebook-login btn-block" loginHandler={ this.handleFacebookLogin } />
+          <FacebookLogin class="facebook-login btn-block" loginHandler={ this.handleFacebookLogin } />
 
+        </div>
       </div>
-
     );
   }
 
