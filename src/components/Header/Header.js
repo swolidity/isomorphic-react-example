@@ -73,10 +73,10 @@ class Header extends React.Component {
 		return (
 			<Navbar className="Navbar" brand={<Link to='/'>Isomorphic React</Link>}>
 				<Nav right>
-		      <NavItemLink to={`/users`}>users</NavItemLink>
-					{ loginNavItem }
-					{ signupNavItem }
-		      { profileDropdown }
+		      <NavItemLink to="/users">users</NavItemLink>
+					{loginNavItem}
+					{signupNavItem}
+		      {profileDropdown}
 	    	</Nav>
 			</Navbar>
 			);
