@@ -1,7 +1,11 @@
 .Navbar {
   background: #fff;
-  border-color: none;
+  border: none;
+  border-radius: 0;
 
+  .profileDropdown .dropdown-toggle {
+    padding: 7px 15px;
+  }
   .navbar-brand {
     text-transform: uppercase;
     font-weight: bold;

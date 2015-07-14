@@ -24,6 +24,6 @@ export default (
 		</Route>
 
 		// user profile
-		<Route handler={UserProfile} path="/:username" />
+		<Route name="user-profile" handler={UserProfile} path="/:username" />
 	</Route>
 );
