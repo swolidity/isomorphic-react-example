@@ -1,6 +1,6 @@
 import alt from '../alt';
-import UserActions from '../actions/UserActions';
-import UserSource from '../sources/UserSource';
+import UsersActions from '../actions/UsersActions';
+import UsersSource from '../sources/UsersSource';
 
 class UsersStore {
 	constructor() {
@@ -8,12 +8,12 @@ class UsersStore {
 		this.errorMessage = null;
 
 		this.bindListeners({
-			handleUpdateUsers: UserActions.UPDATE_USERS,
-			handleFetchUsers: UserActions.FETCH_USERS,
-			handleUsersFailed: UserActions.USERS_FAILED
+			handleUpdateUsers: UsersActions.UPDATE_USERS,
+			handleFetchUsers: UsersActions.FETCH_USERS,
+			handleUsersFailed: UsersActions.USERS_FAILED
 		});
 
-		this.exportAsync(UserSource);
+		this.exportAsync(UsersSource);
 	}
 
 	handleUpdateUsers(users) {

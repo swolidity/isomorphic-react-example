@@ -1,6 +1,6 @@
 import React from 'react';
 import UsersStore from '../../stores/UsersStore';
-import UserActions from '../../actions/UserActions';
+import UsersActions from '../../actions/UsersActions';
 
 class Users extends React.Component {
 
@@ -11,12 +11,9 @@ class Users extends React.Component {
 		this.onChange = this.onChange.bind(this);
 	}
 
-	componentWillMount() {
-		UsersStore.fetchUsers();
-	}
-
 	componentDidMount() {
 		UsersStore.listen(this.onChange);
+		UsersStore.fetchUsers();
 	}
 
 	componentWillUnmount() {
@@ -30,13 +27,13 @@ class Users extends React.Component {
 	render() {
 		if (this.state.errorMessage) {
 			return (
-				<div>Error: {this.state.errorMessage}</div>
+				<div className="container">Error: {this.state.errorMessage}</div>
 				);
 		}
 
 		if(UsersStore.isLoading()) {
 			return (
-				<div>
+				<div className="container">
 					<img src="/spinner.gif" />
 				</div>
 				)

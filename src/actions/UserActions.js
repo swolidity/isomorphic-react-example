@@ -2,17 +2,17 @@ import alt from '../alt';
 
 class UserActions {
 
-	updateUsers(users) {
-		this.dispatch(users);
-	}
+  updateUser(user) {
+    this.dispatch(user);
+  }
 
-	fetchUsers() {
-		this.dispatch(); // "loading" state
-	}
+  fetchUser() {
+    this.dispatch();
+  }
 
-	usersFailed(errorMessage) {
-		this.dispatch(errorMessage);
-	}
+  userFailed(err) {
+    this.dispatch(err);
+  }
 }
 
 module.exports = alt.createActions(UserActions);
