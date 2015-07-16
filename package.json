@@ -45,7 +45,7 @@
     "express": "^4.12.4",
     "react-router": "^0.13.3",
     "react": "^0.13.3",
-    "alt": "^0.16.10",
+    "alt": "^0.17.1",
     "mongoose": "^4.0.5",
     "react-bootstrap": "^0.23.4",
     "jquery": "^2.1.4",
