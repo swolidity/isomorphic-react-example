@@ -29,10 +29,10 @@ class UserProfile extends React.Component {
 
   render() {
     if (this.state.err) {
-			return (
+      return (
 				<div className="container">Error: {this.state.err}</div>
 				);
-		}
+    }
 
 		if(UserStore.isLoading()) {
 			return (
