@@ -11,7 +11,7 @@ require('./Header.scss');
 class Header extends React.Component {
 
 	constructor() {
-		super();
+    super();
 
 		this.state = LoginStore.getState();
 
@@ -74,6 +74,7 @@ class Header extends React.Component {
 			<Navbar className="Navbar" brand={<Link to='/'>Isomorphic React</Link>}>
 				<Nav right>
 		      <NavItemLink to="/users">users</NavItemLink>
+		      <NavItemLink to="/chat">chat</NavItemLink>
 					{loginNavItem}
 					{signupNavItem}
 		      {profileDropdown}

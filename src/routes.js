@@ -10,6 +10,7 @@ import UserProfile from './components/UserProfile/UserProfile';
 import Settings from './components/Settings/Settings';
 import UserProfileSettings from './components/UserProfileSettings/UserProfileSettings';
 import AccountSettings from './components/AccountSettings/AccountSettings';
+import Chat from './components/Chat/Chat';
 
 export default (
 	<Route handler={App} path="/">
@@ -17,6 +18,7 @@ export default (
 		<Route handler={Users} path="/users" />
 		<Route handler={Login} name="login" path="/login" />
 		<Route handler={Signup} path="/signup" />
+		<Route handler={Chat} path="/chat" />
 
 		<Route handler={Settings} path="/settings" >
 			<DefaultRoute name="settings-profile" handler={UserProfileSettings} />

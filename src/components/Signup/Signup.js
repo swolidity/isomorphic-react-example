@@ -51,7 +51,6 @@ class Signup extends React.Component {
   }
 
   render() {
-
     if (this.state.facebook) {
       return (
         <div className="Signup col-xs-12 col-md-5 center-block">
@@ -75,7 +74,7 @@ class Signup extends React.Component {
           <FacebookLogin class="facebook-signup btn-block" callToAction="Sign Up with Facebook" loginHandler={ this.handleFacebookLogin } />
         </div>
       </div>
-    )
+    );
   }
 }
 

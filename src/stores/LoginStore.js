@@ -2,24 +2,24 @@ import alt from '../alt';
 import LoginActions from '../actions/LoginActions';
 import LoginSource from '../sources/LoginSource';
 import FacebookLoginSource from '../sources/FacebookLoginSource';
-import jwt_decode from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 
 class LoginStore {
   constructor() {
-    this.user = null;
     this.login = {};
+    this.token = null;
+    this.user = null;
     this.errorMessage = null;
 
     this.bindListeners({
       handleUpdateLogin: LoginActions.UPDATE_LOGIN,
       handleLoginUser: LoginActions.LOGIN_USER,
       handleLoginFailed: LoginActions.LOGIN_FAILED,
-      handleLogoutUser: LoginActions.LOGOUT_USER
+      handleLogoutUser: LoginActions.LOGOUT_USER,
     });
 
     this.exportAsync(LoginSource);
     this.exportAsync(FacebookLoginSource);
-
   }
 
   handleUpdateLogin(login) {
@@ -27,7 +27,8 @@ class LoginStore {
   }
 
   handleLoginUser(token) {
-    this.user = jwt_decode(token);
+    this.token = token;
+    this.user = jwtDecode(token);
     this.errorMessage = null;
   }
 
@@ -42,6 +43,11 @@ class LoginStore {
   static isLoggedIn() {
     const state = this.getState();
     return !!state.user;
+  }
+
+  static getToken() {
+    const state = this.getState();
+    return state.token;
   }
 }
 

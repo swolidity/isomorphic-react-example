@@ -23,7 +23,17 @@ const UserSchema = new mongoose.Schema({
     id: String,
     token: String
   },
-  date: {type: Date, default: Date.now},
+  date: {
+    type: Date,
+    'default':
+    Date.now
+  },
+  messages: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Message',
+    },
+  ],
 });
 
 UserSchema.pre('save', function(cb) {
