@@ -8,7 +8,7 @@ const config = {
     publicPath: './',
   },
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', 'scss']
+    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.scss']
   }
 }
 
