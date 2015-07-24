@@ -29,8 +29,7 @@ module.exports = {
   //     styleLoader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
   //
   // If you want expanded CSS
-  styleLoader: ExtractTextPlugin.extract('style-loader',
-   'css-loader!sass?sourceMap'),
+  styleLoader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass?sourceMap'),
 
   scripts: {
     'transition': true,
